@@ -58,7 +58,6 @@ You have **two options** for setting up MongoDB. Choose the one that works best 
 ```env
 MONGODB_URI=mongodb+srv://admin:YOUR_PASSWORD@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority
 DATABASE_NAME=adaptive_test
-OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 **Important**: Replace `YOUR_PASSWORD` with the password you created in Step 3!

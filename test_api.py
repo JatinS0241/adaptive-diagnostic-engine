@@ -117,8 +117,8 @@ def test_api():
         print(f"   - Questions Answered: {plan_data.get('questions_answered', 0)}")
         print(f"   - Accuracy: {plan_data.get('accuracy', 0)}%")
     else:
-        print(f"   ⚠️  Note: Study plan generation requires OpenAI API key")
-        print(f"   Add OPENAI_API_KEY to .env file to enable this feature")
+        print(f"   ⚠️  Study plan generation failed: {response.status_code}")
+        print(f"   Check server logs for details")
     
     print(f"\n{'='*60}")
     print("✅ API test completed successfully!")

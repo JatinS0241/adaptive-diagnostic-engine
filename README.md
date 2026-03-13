@@ -93,9 +93,6 @@ pip install -r requirements.txt
 ```bash
 # Copy the example env file
 copy .env.example .env
-
-# Edit .env and add your OpenAI API key
-OPENAI_API_KEY=your_actual_api_key_here
 ```
 
 ### 4. Start MongoDB
@@ -311,8 +308,8 @@ web: uvicorn app.main:app --host 0.0.0.0 --port $PORT
 ```
 
 2. Set environment variables:
-   - `OPENAI_API_KEY`
    - `MONGODB_URI` (use MongoDB Atlas for cloud database)
+  - `DATABASE_NAME` (optional, defaults to `adaptive_test`)
 
 3. Deploy and share your live demo link!
 

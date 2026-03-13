@@ -56,8 +56,8 @@ This guide shows you exactly how to present your project to stand out from the c
      - Build Command: `pip install -r requirements.txt`
      - Start Command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
    - Add environment variables:
-     - `OPENAI_API_KEY`
      - `MONGODB_URI`
+       - `DATABASE_NAME=adaptive_test`
 
 4. **Seed the database**:
    ```bash

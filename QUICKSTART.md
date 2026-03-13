@@ -11,9 +11,6 @@ pip install -r requirements.txt
 ```bash
 # Copy the example environment file
 copy .env.example .env
-
-# Edit .env and add your OpenAI API key (optional for basic testing)
-# OPENAI_API_KEY=sk-your-key-here
 ```
 
 ### Step 3: Start MongoDB

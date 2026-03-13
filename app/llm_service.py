@@ -1,41 +1,29 @@
-from openai import OpenAI
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
 def generate_study_plan(topics, ability):
     """
-    Generate personalized study plan using LLM.
-    
+    Generate a personalized, rule-based 3-step study plan.
+
     Args:
         topics: List of weak topics
         ability: Current ability score (0.0 to 1.0)
-    
+
     Returns:
         String containing study plan recommendations
     """
-    prompt = f"""
-Student ability score: {ability:.2f} (on a scale of 0.0 to 1.0)
+    if ability < 0.35:
+        level_guidance = "begin with fundamentals and untimed practice"
+    elif ability < 0.65:
+        level_guidance = "focus on mixed medium-difficulty sets and accuracy"
+    else:
+        level_guidance = "practice advanced, timed problem-solving"
 
-Weak topics identified: {', '.join(topics) if topics else 'None - performing well overall'}
+    weak_topics = topics if topics else ["overall consistency"]
+    primary_topic = weak_topics[0]
+    secondary_topic = weak_topics[1] if len(weak_topics) > 1 else weak_topics[0]
 
-Based on this assessment, create a personalized 3-step study plan that:
-1. Addresses the weak topics identified
-2. Matches the student's current ability level
-3. Provides actionable, specific steps
+    plan_lines = [
+        f"1. Review core concepts in {primary_topic} for 30-45 minutes and solve 10 easy practice questions.",
+        f"2. Do a focused practice block on {secondary_topic} ({level_guidance}) and analyze every mistake.",
+        "3. Take one mixed mini-test (8-12 questions), track weak areas, and revise the top 2 mistakes before the next session.",
+    ]
 
-Format the response as a clear, numbered study plan.
-"""
-    
-    try:
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[{"role": "user", "content": prompt}]
-        )
-        
-        return response.choices[0].message.content
-    except Exception as e:
-        return f"Error generating study plan: {str(e)}"
+    return "\n".join(plan_lines)

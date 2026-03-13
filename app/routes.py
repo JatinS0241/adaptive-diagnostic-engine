@@ -161,7 +161,7 @@ def generate_plan(request: StudyPlanRequest):
         topics_missed = session.get("topics_missed", [])
         questions_answered = session.get("questions_answered", [])
         
-        # Generate study plan using LLM
+        # Generate study plan using local rule-based logic
         study_plan = generate_study_plan(topics_missed, ability)
         
         # Calculate statistics

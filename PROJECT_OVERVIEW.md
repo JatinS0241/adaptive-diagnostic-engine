@@ -375,7 +375,7 @@ Follow the deployment section in [SUBMISSION_GUIDE.md](SUBMISSION_GUIDE.md)
 
 2. Create `.env` file:
    - Copy from `.env.example`
-   - Add your `OPENAI_API_KEY`
+   - Set your `MONGODB_URI` and `DATABASE_NAME`
 
 3. Test thoroughly:
    - Run `python test_api.py`
