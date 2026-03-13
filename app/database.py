@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+import certifi
 import os
 from dotenv import load_dotenv
 
@@ -10,7 +11,12 @@ MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
 DATABASE_NAME = os.getenv("DATABASE_NAME", "adaptive_test")
 
 # Create MongoDB client
-client = MongoClient(MONGODB_URI)
+client = MongoClient(
+	MONGODB_URI,
+	tls=True,
+	tlsCAFile=certifi.where(),
+	serverSelectionTimeoutMS=30000,
+)
 
 # Get database
 db = client[DATABASE_NAME]
